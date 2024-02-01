@@ -15,10 +15,19 @@ public class Plane : MonoBehaviour
     public float speed = 1f;
     public AnimationCurve landing;
     float timerValue;
+    public List<Sprite> planeSprites;
+    SpriteRenderer sprtiteRenderer;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprtiteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+        speed = Random.Range(1, 3);
+        sprtiteRenderer.sprite = planeSprites[Random.Range(0, planeSprites.Count)];
+
+
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
