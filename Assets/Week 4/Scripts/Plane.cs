@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,7 @@ public class Plane : MonoBehaviour
     float timerValue;
     public List<Sprite> planeSprites;
     SpriteRenderer spriteRenderer;
+    public Boolean land = false;
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (land)
         {
             timerValue += 0.5f * Time.deltaTime;
             float interpolation = landing.Evaluate(timerValue);
