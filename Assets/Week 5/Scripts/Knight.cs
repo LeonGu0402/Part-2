@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Knight : MonoBehaviour
     public float speed = 3;
     Rigidbody2D rb;
     Animator animator;
+    Boolean slefClicking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +33,21 @@ public class Knight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !slefClicking)
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         animator.SetFloat("Movement", movement.magnitude);
     }
 
+    private void OnMouseDown()
+    {
+        slefClicking = true;
+        animator.SetTrigger("TakeDamage");
+    }
+
+    private void OnMouseUp()
+    {
+        slefClicking = false;
+    }
 }
