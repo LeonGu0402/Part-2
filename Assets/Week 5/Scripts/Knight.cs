@@ -10,12 +10,15 @@ public class Knight : MonoBehaviour
     public float speed = 3;
     Rigidbody2D rb;
     Animator animator;
-    Boolean slefClicking = false;
-    // Start is called before the first frame update
+    bool slefClicking = false;
+    public float health;
+    public float maxHealth = 5;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = rb.GetComponent<Animator>();
+        health = maxHealth;
     }
 
     private void FixedUpdate()
@@ -43,11 +46,26 @@ public class Knight : MonoBehaviour
     private void OnMouseDown()
     {
         slefClicking = true;
-        animator.SetTrigger("TakeDamage");
+        SendMessage("TakeDamage", 1);
     }
 
     private void OnMouseUp()
     {
         slefClicking = false;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        if (health == 0)
+        {
+            animator.SetTrigger("Die");
+        }
+        else
+        {
+            animator.SetTrigger("TakeDamage");
+        }
+        
     }
 }
