@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
         slider.value -= damage;
     }
 
-    public void SetUILength()
+    public void SetHealth()
     {
         slider.value = PlayerPrefs.GetFloat("Health");
     }
