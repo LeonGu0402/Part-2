@@ -37,6 +37,7 @@ public class Weapon : MonoBehaviour
             collision.gameObject.SendMessage("TakeDamage", 1);
             Destroy(gameObject);
         }
+
     }
 
 
