@@ -22,17 +22,7 @@ public class Knight : MonoBehaviour
         animator = rb.GetComponent<Animator>();
         health = maxHealth;
 
-
-        PlayerPrefs.GetFloat("Health", 5);
-        health = PlayerPrefs.GetFloat("Health");
-
-
-        if (PlayerPrefs.GetFloat("Health") == 0)
-        {
-            animator.SetTrigger("Die");
-        }
-
-        SendMessage("SetUILength");
+        SendMessage("SetHealth");
     }
 
     private void FixedUpdate()
@@ -98,5 +88,18 @@ public class Knight : MonoBehaviour
             PlayerPrefs.SetFloat("Health", health);
         }
         
+    }
+
+    public void SetHealth()
+    {
+
+        PlayerPrefs.GetFloat("Health", 5);
+        health = PlayerPrefs.GetFloat("Health");
+
+
+        if (PlayerPrefs.GetFloat("Health") == 0)
+        {
+            animator.SetTrigger("Die");
+        }
     }
 }
