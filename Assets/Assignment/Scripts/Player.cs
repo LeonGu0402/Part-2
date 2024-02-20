@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public int appleNum;
 
     public GameObject ui;
+    public GameObject sceneManager;
 
     public Text appleUI;
 
@@ -73,6 +74,11 @@ public class Player : MonoBehaviour
         }
 
         appleUI.text = appleNum.ToString();
+
+        if (health <= 0)
+        {
+            sceneManager.SendMessage("gameOver");
+        }
     }
 
     void speedLerp()
