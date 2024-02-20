@@ -542,7 +542,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 273233124}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: heal
+        m_MethodName: increase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3819,6 +3819,8 @@ MonoBehaviour:
   slowSpeed: 2
   health: 0
   appleNum: 0
+  ui: {fileID: 273233121}
+  appleUI: {fileID: 1581303725}
 --- !u!1001 &2078909477
 PrefabInstance:
   m_ObjectHideFlags: 0

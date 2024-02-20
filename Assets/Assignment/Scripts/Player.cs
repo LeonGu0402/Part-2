@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
     public AnimationCurve animationCurve;
+
     public float lerpTime = 0;
     public float speed;
     public float fastSpeed = 6;
@@ -23,6 +24,10 @@ public class Player : MonoBehaviour
     public int health;
     public int appleNum;
 
+    public GameObject ui;
+
+    public Text appleUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,7 @@ public class Player : MonoBehaviour
         animator = rb.GetComponent<Animator>();
         health = 5;
         appleNum = 0;
+
     }
 
     private void FixedUpdate()
@@ -50,7 +56,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -65,6 +71,8 @@ public class Player : MonoBehaviour
         {
             animationDetection();
         }
+
+        appleUI.text = appleNum.ToString();
     }
 
     void speedLerp()
@@ -82,7 +90,7 @@ public class Player : MonoBehaviour
         {
             right = true;
         }
-        else if(mouse.x < originPoint.x)
+        else if (mouse.x < originPoint.x)
         {
             left = true;
         }
@@ -107,7 +115,7 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("up", true);
         }
-        else if(left && gradient > 2)
+        else if (left && gradient > 2)
         {
             animator.SetBool("down", true);
         }
@@ -132,10 +140,17 @@ public class Player : MonoBehaviour
     void appleGetOne()
     {
         appleNum += 1;
+        if (health < 5)
+        {
+            health += 1;
+        }
+        ui.SendMessage("increase");
     }
 
     void damage()
     {
         health -= 1;
+        ui.SendMessage("reduce");
     }
 }
+
