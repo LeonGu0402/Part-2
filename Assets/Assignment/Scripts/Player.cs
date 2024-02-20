@@ -20,11 +20,16 @@ public class Player : MonoBehaviour
     Boolean left;
     Boolean right;
 
+    public int health;
+    public int appleNum;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = rb.GetComponent<Animator>();
+        health = 5;
+        appleNum = 0;
     }
 
     private void FixedUpdate()
@@ -122,5 +127,15 @@ public class Player : MonoBehaviour
         animator.SetBool("down", false);
         right = false;
         left = false;
+    }
+
+    void appleGetOne()
+    {
+        appleNum += 1;
+    }
+
+    void damage()
+    {
+        health -= 1;
     }
 }
