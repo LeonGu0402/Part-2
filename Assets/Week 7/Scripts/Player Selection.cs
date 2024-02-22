@@ -43,6 +43,6 @@ public class PlayerSelection : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Selected(true);
+        Controller.setSelectedPlayer(this);
     }
 }
