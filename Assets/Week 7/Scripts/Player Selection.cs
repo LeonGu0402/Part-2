@@ -12,6 +12,7 @@ public class PlayerSelection : MonoBehaviour
     public Color unselectColour;
     SpriteRenderer sr;
     Rigidbody2D rb;
+    public float speed = 500f;
 
 
     // Start is called before the first frame update
@@ -44,5 +45,10 @@ public class PlayerSelection : MonoBehaviour
     private void OnMouseDown()
     {
         Controller.setSelectedPlayer(this);
+    }
+
+    public void Move(Vector2 direction)
+    {
+        rb.AddForce(direction * speed);
     }
 }

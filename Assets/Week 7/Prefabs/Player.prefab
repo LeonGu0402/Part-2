@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 4
+  m_LinearDrag: 3
   m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectColour: {r: 1, g: 0.2, b: 0, a: 1}
   unselectColour: {r: 0.50980395, g: 0, b: 0, a: 1}
+  speed: 1000
 --- !u!1 &6967905619981834826
 GameObject:
   m_ObjectHideFlags: 0
