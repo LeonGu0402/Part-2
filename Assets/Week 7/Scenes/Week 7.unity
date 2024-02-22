@@ -4113,6 +4113,7 @@ MonoBehaviour:
   goalKeeper: {fileID: 6652567101501506636}
   distance: 0
   goalRadius: 2
+  speed: 0.5
 --- !u!4 &1381450526
 Transform:
   m_ObjectHideFlags: 0

@@ -12,18 +12,21 @@ public class GoalkeeperController : MonoBehaviour
     Vector2 playerPosition;
     Vector2 goalLinePosition;
     public float goalRadius = 2;
+    public float speed = 1;
 
     private void FixedUpdate()
     {
         if (Controller.SelectedPlayer == null) return;
+
         if (distance < goalRadius)
         {
-            goalKeeper.position = goalLinePosition - direction * distance;
+            goalKeeper.position = Vector2.MoveTowards(goalKeeper.position, goalLinePosition - direction * distance, speed);
         }
-        else if(distance > goalRadius)
+        else if (distance > goalRadius)
         {
-            goalKeeper.position = goalLinePosition - direction * goalRadius;
+            goalKeeper.position = Vector2.MoveTowards(goalKeeper.position, goalLinePosition - direction * goalRadius, speed);
         }
+
     }
 
 
@@ -39,6 +42,6 @@ public class GoalkeeperController : MonoBehaviour
         direction.Normalize();
 
 
-
+        
     }
 }
